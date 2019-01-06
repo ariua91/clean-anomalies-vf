@@ -101,9 +101,9 @@ def get_times(tzoffset):
     '''
     current_dt = datetime.utcnow() + timedelta(hours=tzoffset)
     return (datetime.strftime(current_dt,
-                              '%Y-%m-%dT{:02d}:00:00+08:00'.format(tzoffset)),
+                              '%Y-%m-%dT06:00:00+08:00'),
             datetime.strftime(current_dt + timedelta(days=1),
-                              '%Y-%m-%dT{:02d}:59:59+08:00'.format(tzoffset - 1)))
+                              '%Y-%m-%dT05:59:59+08:00'))
 
 
 def get_all_tasks(varibales, time_from, time_to, per_pg, archived):
@@ -147,7 +147,7 @@ variables = {
     'c_id': CLIENT_ID,
     'c_secret': CLIENT_SECRET
 }
-time_from, time_to = get_times(6)
+time_from, time_to = get_times(2)
 task_list = get_all_tasks(variables, time_from, time_to, 20, 0)
 
 invoice_dict = {}
